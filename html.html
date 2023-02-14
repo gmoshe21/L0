@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input placeholder="input order UID" name="orderUID" type="text">
+  <br />
+  <button onclick="getData()">send</button>
+  <br />
+  <textarea></textarea>
+</body>
+<script>
+  const button = document.querySelector('button');
+  const input = document.querySelector('input');
+  const textarea = document.querySelector('textarea')
+
+  async function getData() {
+    const response = await fetch('http://127.0.0.1:8080/control/get_order/?uid=' + input.value,
+      {
+        method: 'GET',
+        headers: {
+        mode: 'no-cors',
+        credentials: 'same-origin',
+          'Content-Type': 'application/json'
+        }
+      })
+
+    try { 
+      const order = await response.text(); 
+      textarea.value = order;
+    }
+    catch (err) {
+      console.log(err)
+    }
+  }
+
+</script>
+
+</html>
