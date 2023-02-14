@@ -38,6 +38,6 @@ func main() {
 			fmt.Println(err)
 		}
 		fmt.Println("push:", key)
-		time.Sleep(3000 * time.Millisecond)
+		time.Sleep(2000 * time.Millisecond)
 	}
 }
